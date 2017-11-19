@@ -1,0 +1,91 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hero.zhaoq.mpuserecorder.view.fragments.Normal3dMapFragment">
+
+    <com.amap.api.maps.MapView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/fab"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingRight="@dimen/logo_margin"
+        android:paddingBottom="@dimen/logo_margin"
+        android:elevation="8dp"
+        app:menu_backgroundColor="@android:color/transparent"
+        app:menu_colorNormal="@color/refresh_color"
+        app:menu_colorPressed="@color/pressed_bg"
+        app:menu_labels_ellipsize="end"
+        app:menu_labels_singleLine="true"
+        >
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/float_big"
+            android:layout_width="@dimen/title_bar_height"
+            android:layout_height="@dimen/title_bar_height"
+            app:fab_colorNormal="@color/green_light_color"
+            app:fab_colorPressed="@color/pressed_bg"
+            android:src="@mipmap/zoom_big"
+            app:fab_label="放大"
+            app:fab_size="mini"
+            />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/float_small"
+            android:layout_width="@dimen/title_bar_height"
+            android:layout_height="@dimen/title_bar_height"
+            app:fab_colorNormal="@color/green_light_color"
+            app:fab_colorPressed="@color/pressed_bg"
+            android:src="@mipmap/zoom_small"
+            app:fab_label="缩小"
+            app:fab_size="mini"
+            />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/modle_star"
+            android:layout_width="@dimen/title_bar_height"
+            android:layout_height="@dimen/title_bar_height"
+            app:fab_colorNormal="@color/green_light_color"
+            android:src="@mipmap/star"
+            app:fab_label="卫星模式"
+            app:fab_colorPressed="@color/pressed_bg"
+            app:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/modle_night"
+            android:layout_width="@dimen/title_bar_height"
+            android:layout_height="@dimen/title_bar_height"
+            app:fab_colorNormal="@color/green_light_color"
+            android:src="@mipmap/night"
+            app:fab_label="夜间模式"
+            app:fab_colorPressed="@color/pressed_bg"
+            app:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/modle_navigation"
+            android:layout_width="@dimen/title_bar_height"
+            android:layout_height="@dimen/title_bar_height"
+            app:fab_colorNormal="@color/green_light_color"
+            android:src="@mipmap/navigation"
+            app:fab_label="导航模式"
+            app:fab_colorPressed="@color/pressed_bg"
+            app:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/modle_normal"
+            android:layout_width="@dimen/title_bar_height"
+            android:layout_height="@dimen/title_bar_height"
+            app:fab_colorNormal="@color/green_light_color"
+            android:src="@mipmap/normal"
+            app:fab_label="标准模式"
+            app:fab_colorPressed="@color/pressed_bg"
+            app:fab_size="mini" />
+
+    </com.github.clans.fab.FloatingActionMenu>
+
+</FrameLayout>

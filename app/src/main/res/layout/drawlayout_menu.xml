@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="@dimen/drawlayout_width"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:padding="10dp"
+
+    android:background="@color/white_dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/map_3d"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/normal_pressed_selector"
+            android:gravity="center"
+            android:clickable="true"
+            android:textColor="@color/text_color"
+            android:text="@string/to_3d_map"
+            android:textSize="@dimen/sp_12"
+            />
+
+        <include layout="@layout/hor_line"/>
+
+        <TextView
+            android:id="@+id/location_detail"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/normal_pressed_selector"
+            android:gravity="center"
+            android:clickable="true"
+            android:textColor="@color/text_color"
+            android:text="@string/my_location_detail"
+            android:textSize="@dimen/sp_12"
+            />
+
+        <include layout="@layout/hor_line"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/creator_str"
+        android:textSize="10sp"
+        android:gravity="center"
+        android:layout_margin="3dp"
+        android:textColor="@color/green_color"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/github"
+        android:textSize="10sp"
+        android:gravity="center"
+        android:layout_margin="3dp"
+        android:textColor="@color/green_color"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/csdn"
+        android:textSize="10sp"
+        android:gravity="center"
+        android:layout_margin="3dp"
+        android:textColor="@color/green_color"
+        />
+</LinearLayout>

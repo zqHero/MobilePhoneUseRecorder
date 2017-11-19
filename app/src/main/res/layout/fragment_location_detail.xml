@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp"
+    tools:context="com.hero.zhaoq.mpuserecorder.view.fragments.LocationDetailFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:text="当前位置信息:"
+        android:textSize="15sp" />
+
+    <include layout="@layout/hor_line" />
+
+    <ListView
+        android:id="@+id/location_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/green_color"
+        android:dividerHeight="0.5dp" />
+
+</LinearLayout>
+
+
+

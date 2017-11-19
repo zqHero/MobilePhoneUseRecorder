@@ -1,0 +1,19 @@
+<resources>
+
+    <string name="app_name">MPUseRecorder</string>
+    <string name="creator_str">\@ created by zhaoqiang </string>
+    <string name="email">email:zhaoq_hero@163.com</string>
+    <string name="csdn">csdn:http://blog.csdn.net/u013233097</string>
+    <string name="github">github:https://github.com/zqHero</string>
+
+
+    <string name="to_3d_map">to 3d map</string>
+    <string name="to_2d_map">to 2d map</string>
+    <string name="my_location_detail">my location detail</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Heladsadsadsaadsaasdsa adasdasd
+        asdasdasdasdadsadsdsent</string>
+
+
+</resources>
