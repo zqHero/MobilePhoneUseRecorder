@@ -2,12 +2,18 @@ package com.hero.zhaoq.mpuserecorder;
 
 import android.app.ActivityManager;
 import android.app.Application;
+import android.app.usage.UsageStats;
+import android.app.usage.UsageStatsManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.os.Build;
+import android.provider.Settings;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -27,7 +33,8 @@ public class MApplication extends Application {
         super.onCreate();
 
 //        String sha1 = getSha1(this);
-        getSha1(this);
+//        getSha1(this);
+
     }
 
     public static String getSha1(Context context) {
@@ -56,6 +63,38 @@ public class MApplication extends Application {
         return null;
     }
 
+//    {
+//        UsageStatsManager mUsageStatsManager = (UsageStatsManager) getApplicationContext().getSystemService(Context.USAGE_STATS_SERVICE);
+//        long time = System.currentTimeMillis();
+//        List<UsageStats> stats;
+//        if(isFirst)
+//
+//        {
+//            stats = mUsageStatsManager.queryUsageStats(UsageStatsManager.INTERVAL_DAILY, time - TWENTYSECOND, time);
+//        }else
+//
+//        {
+//            stats = mUsageStatsManager.queryUsageStats(UsageStatsManager.INTERVAL_DAILY, time - THIRTYSECOND, time);
+//        }
+//            // Sort the stats by the last time used
+//        if(stats !=null)
+//
+//        {
+//            TreeMap<Long, UsageStats> mySortedMap = new TreeMap<Long, UsageStats>();
+//            start = System.currentTimeMillis();
+//            for (UsageStats usageStats : stats) {
+//                mySortedMap.put(usageStats.getLastTimeUsed(), usageStats);
+//            }
+//            LogUtil.e(TAG, "isFirst=" + isFirst + ",mySortedMap cost:" + (System.currentTimeMillis() - start));
+//            if (mySortedMap != null && !mySortedMap.isEmpty()) {
+//
+//                topPackageName = mySortedMap.get(mySortedMap.lastKey()).getPackageName();
+//
+//                runningTopActivity = new ComponentName(topPackageName, "");
+//                if (LogUtil.isDebug()) LogUtil.d(TAG, topPackageName);
+//            }
+//        }
+//    }
 
 
 

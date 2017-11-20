@@ -29,6 +29,7 @@ public abstract class BaseActivity extends CheckPermissionsActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutRes());
+
     }
 
     @Override

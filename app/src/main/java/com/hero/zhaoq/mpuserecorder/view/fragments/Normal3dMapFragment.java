@@ -1,6 +1,9 @@
 package com.hero.zhaoq.mpuserecorder.view.fragments;
 
 
+import android.app.usage.UsageStats;
+import android.app.usage.UsageStatsManager;
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -15,6 +18,9 @@ import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.hero.zhaoq.mpuserecorder.MApplication;
 import com.hero.zhaoq.mpuserecorder.R;
+
+import java.lang.reflect.Field;
+import java.util.List;
 
 /**
  * normal map:
@@ -162,6 +168,7 @@ public class Normal3dMapFragment extends BaseFragment implements View.OnClickLis
 
 
                 Log.i("info", zoom + "=====" + zoomLevel);
+
 
                 break;
             case R.id.float_small:
