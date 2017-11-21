@@ -104,14 +104,26 @@ public class MRecycleVAdapter extends RecyclerView.Adapter {
                                 "用时：" + getFormatData(datas.get(position).getTotalTimeInForeground()) + "");
                 appImg.setBackgroundDrawable(info.getDrawable());
 
-                Log.i("info", "getAppName：" + info.getAppName() + "(" + info.getPackageName() + ")\n" +
-                        "getLastTimeUsed：" + simpleDateFormat.format(new Date(datas.get(position).getLastTimeUsed())) + "\n" +
-                        "getFirstTimeStamp：" + simpleDateFormat.format(new Date(datas.get(position).getFirstTimeStamp())) + "\n" +
-                        "getLastTimeStamp：" + simpleDateFormat.format(new Date(datas.get(position).getLastTimeStamp())) + "\n" +
-                        "getTotalTimeInForeground：" + simpleDateFormat.format(new Date(datas.get(position).getTotalTimeInForeground())) + "\n"
-                );
+//                Log.i("info", "getAppName：" + info.getAppName() + "(" + info.getPackageName() + ")\n" +
+//                        "getLastTimeUsed：" + simpleDateFormat.format(new Date(datas.get(position).getLastTimeUsed())) + "\n" +
+//                        "getFirstTimeStamp：" + simpleDateFormat.format(new Date(datas.get(position).getFirstTimeStamp())) + "\n" +
+//                        "getLastTimeStamp：" + simpleDateFormat.format(new Date(datas.get(position).getLastTimeStamp())) + "\n" +
+//                        "getTotalTimeInForeground：" + simpleDateFormat.format(new Date(datas.get(position).getTotalTimeInForeground())) + "\n"
+//                );
+            }
+
+            itemView.setTag(datas.get(position));
+
+            if (onItemClickListener!=null){
+                itemView.setOnClickListener(onItemClickListener);
             }
         }
+    }
+
+    public View.OnClickListener onItemClickListener;
+
+    public void setOnItemClickListener(View.OnClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
     }
 
     private String getFormatData(long totalTimeInForeground) {
@@ -120,5 +132,7 @@ public class MRecycleVAdapter extends RecyclerView.Adapter {
         int s = (int) (totalTimeInForeground - (h * (1000 * 60 * 60)) - (m * 1000 * 60)) / 1000;
         return h + ":" + m + ":" + s;
     }
+
+
 
 }

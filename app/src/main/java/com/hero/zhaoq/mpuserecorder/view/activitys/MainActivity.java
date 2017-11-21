@@ -5,6 +5,7 @@ import android.app.usage.UsageStatsManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.LinearLayoutManager;
@@ -37,7 +38,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private TextView title;
     private View titleRight;
 
-
     @Override
     protected int getLayoutRes() {
         return R.layout.activity_main;
@@ -52,7 +52,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         titleRight = findViewById(R.id.title_right);
 
-
         refreshLayout = findViewById(R.id.refresh_layout);
         recycleV = findViewById(R.id.recycle_view);
 
@@ -63,6 +62,19 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         recycleV.setLayoutManager(new LinearLayoutManager(this));
         mRecycleVAdapter = new MRecycleVAdapter(this, new ArrayList<UsageStats>());
+        mRecycleVAdapter.setOnItemClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UsageStats  stus = (UsageStats) v.getTag();
+                Intent intent = new Intent(MainActivity.this, AppDitalInfoActivity.class);
+                Bundle bundle = new Bundle();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    bundle.putParcelable("data",stus);
+                }
+                intent.putExtra("bundle",bundle);
+                startActivity(intent);
+            }
+        });
         recycleV.setAdapter(mRecycleVAdapter);
     }
 
@@ -91,7 +103,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected void initData() {
         mRecycleVAdapter.setData(getData());
     }
-
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private List<UsageStats> getData() {

@@ -40,23 +40,6 @@ public abstract class BaseActivity extends CheckPermissionsActivity {
 
         initMapLocation();
 
-        getRecentTask();
-    }
-
-    public void getRecentTask() {
-        PackageManager pm = this.getPackageManager();
-        ActivityManager mActivityManager = (ActivityManager) this
-                .getSystemService(Context.ACTIVITY_SERVICE);
-        List<ActivityManager.RecentTaskInfo> appList4 = mActivityManager
-                .getRecentTasks(5, ActivityManager.RECENT_WITH_EXCLUDED);//参数，前一个是你要取的最大数，后一个是状态
-        for (ActivityManager.RecentTaskInfo running : appList4) {
-            Intent intent = running.baseIntent;
-            ResolveInfo resolveInfo = pm.resolveActivity(intent, 0);
-            if (resolveInfo != null) {
-                Log.i("info",resolveInfo.activityInfo.packageName + "n");//获取应用包名
-                Log.i("info",resolveInfo.loadLabel(pm).toString() + "n");//获取应用名
-            }
-        }
     }
 
     protected abstract int getLayoutRes();
@@ -68,7 +51,6 @@ public abstract class BaseActivity extends CheckPermissionsActivity {
     protected void initData(){
 
     }
-
 
     /**
      * 位置  变化  处理
@@ -159,8 +141,6 @@ public abstract class BaseActivity extends CheckPermissionsActivity {
         //启动定位
         mLocationClient.startLocation();
     }
-
-
 
 
 }
