@@ -3,11 +3,12 @@ package com.hero.zhaoq.mpuserecorder.view.activitys;
 import android.app.usage.UsageStats;
 import android.app.usage.UsageStatsManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
+import android.provider.Settings;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -34,6 +35,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private TextView leftTv;
     private MRecycleVAdapter mRecycleVAdapter;
     private TextView title;
+    private View titleRight;
 
 
     @Override
@@ -48,6 +50,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         leftTv.setText("locating");
         title.setText("MobilePhone Use Recorder");
 
+        titleRight = findViewById(R.id.title_right);
+
+
         refreshLayout = findViewById(R.id.refresh_layout);
         recycleV = findViewById(R.id.recycle_view);
 
@@ -59,7 +64,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         recycleV.setLayoutManager(new LinearLayoutManager(this));
         mRecycleVAdapter = new MRecycleVAdapter(this, new ArrayList<UsageStats>());
         recycleV.setAdapter(mRecycleVAdapter);
-
     }
 
     @Override
@@ -69,19 +73,28 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             public void onRefreshing() {
                 //刷新   了界面
                 refreshLayout.postDelayed(new Runnable() {
+                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                     @Override
                     public void run() {
+                        mRecycleVAdapter.setData(getData());
                         refreshLayout.refreshComplete();
                     }
                 }, 3000);
             }
         });
         leftTv.setOnClickListener(this);
+        titleRight.setOnClickListener(this);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void initData() {
+        mRecycleVAdapter.setData(getData());
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private List<UsageStats> getData() {
         UsageStatsManager m = (UsageStatsManager) getSystemService(Context.USAGE_STATS_SERVICE);
         //获取 一个月内的使用数据
         Calendar calendar = Calendar.getInstance();
@@ -96,21 +109,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         Collections.sort(stats, new Comparator<UsageStats>() {
             @Override
             public int compare(UsageStats o1, UsageStats o2) {
-                return o1.getLastTimeStamp() - o2.getLastTimeStamp() > 0 ? -1 : 1;
+                return o1.getLastTimeStamp() - o2.getLastTimeStamp() >= 0 ? -1 : 1;
             }
         });
 
         //去掉  当前包名  和系统桌面包名：
         for (int i = 0; i < stats.size(); i++) {
             UsageStats stats1 = stats.get(i);
-            Log.i("info",stats1.getPackageName()+"-------sd-------");
-            if ( stats1.getPackageName().equals(AppInfoUtils.getHomes(this).get(0).toString())) {
+            if (stats1.getPackageName().equals(AppInfoUtils.getHomes(this).get(0).toString()) ||
+                    stats1.getPackageName().equals("com.hero.zhaoq.mpuserecorder")) {
                 stats.remove(stats1);
             }
         }
-        mRecycleVAdapter.setData(stats);
+        return stats;
     }
-
 
     @Override
     protected void onMLocationChanged(AMapLocation aMapLocation) {
@@ -122,6 +134,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.title_left:
                 MapActivity.startAction(this);
+                break;
+
+            case R.id.title_right:
+                startActivity(new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS));
                 break;
             default:
                 break;

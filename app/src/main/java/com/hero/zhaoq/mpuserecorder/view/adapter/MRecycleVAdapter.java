@@ -103,6 +103,13 @@ public class MRecycleVAdapter extends RecyclerView.Adapter {
                                 "最近使用：" + simpleDateFormat.format(new Date(datas.get(position).getLastTimeUsed())) + "\n" +
                                 "用时：" + getFormatData(datas.get(position).getTotalTimeInForeground()) + "");
                 appImg.setBackgroundDrawable(info.getDrawable());
+
+                Log.i("info", "getAppName：" + info.getAppName() + "(" + info.getPackageName() + ")\n" +
+                        "getLastTimeUsed：" + simpleDateFormat.format(new Date(datas.get(position).getLastTimeUsed())) + "\n" +
+                        "getFirstTimeStamp：" + simpleDateFormat.format(new Date(datas.get(position).getFirstTimeStamp())) + "\n" +
+                        "getLastTimeStamp：" + simpleDateFormat.format(new Date(datas.get(position).getLastTimeStamp())) + "\n" +
+                        "getTotalTimeInForeground：" + simpleDateFormat.format(new Date(datas.get(position).getTotalTimeInForeground())) + "\n"
+                );
             }
         }
     }

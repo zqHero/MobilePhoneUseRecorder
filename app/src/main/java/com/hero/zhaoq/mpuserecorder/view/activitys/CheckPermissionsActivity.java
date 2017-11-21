@@ -43,14 +43,7 @@ public class CheckPermissionsActivity extends AppCompatActivity {
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.READ_PHONE_STATE,
-
-            Manifest.permission.PACKAGE_USAGE_STATS,
     };
-
-    //获取  手机使用  状态 权限：
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//        startActivity(new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS));
-//    }
 
     private static final int PERMISSON_REQUESTCODE = 0;
 
@@ -179,7 +172,6 @@ public class CheckPermissionsActivity extends AppCompatActivity {
     }
 
 
-
     /**
      * 启动应用的设置
      *
@@ -190,6 +182,11 @@ public class CheckPermissionsActivity extends AppCompatActivity {
                 Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
         intent.setData(Uri.parse("package:" + getPackageName()));
         startActivity(intent);
+
+//        获取  手机使用  状态 权限：
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            startActivity(new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS));
+        }
     }
 
     @Override

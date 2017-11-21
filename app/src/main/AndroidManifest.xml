@@ -48,9 +48,10 @@
 
         <!--定位相关：-->
         <service android:name="com.amap.api.location.APSService" />
+
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="d7d8f34b8fc3519fcaf2038faf71635c"></meta-data>
+            android:value="d7d8f34b8fc3519fcaf2038faf71635c"/>
 
     </application>
 
