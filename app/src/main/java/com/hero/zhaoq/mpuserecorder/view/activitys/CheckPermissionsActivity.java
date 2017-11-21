@@ -42,7 +42,12 @@ public class CheckPermissionsActivity extends AppCompatActivity {
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE,
+
             Manifest.permission.READ_PHONE_STATE,
+
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_WIFI_STATE
     };
 
     private static final int PERMISSON_REQUESTCODE = 0;
@@ -87,7 +92,6 @@ public class CheckPermissionsActivity extends AppCompatActivity {
 
     /**
      * 获取权限集中需要申请权限的列表
-     *
      * @param permissions
      * @return
      * @since 2.5.0
